@@ -1,0 +1,19 @@
+<html><head><title>Outfit Test</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+</head><body>
+<div id='outfit'></div>
+<script>
+$(document).ready(function() {
+    var url =  "http://census.soe.com/s:bringinthestats/get/ps2-beta/outfit?alias=snh&c:resolve=member";
+    $.getJSON(url + "&callback=?", function(json) {
+    	console.log(json);
+    	console.log();
+
+    	var n = 0;
+    	for (n in json.outfit_list[0].members) {
+    		console.log(json.outfit_list[0].members[n].character_id)
+    	}
+    });
+});
+</script>
+</body></html>
