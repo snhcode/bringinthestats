@@ -9,10 +9,26 @@ $(document).ready(function() {
     	console.log(json);
     	console.log();
 
+    	// Storage variables for the SAW in this test.
+    	var timeCount = 0;
+    	var killCount = 0;
+    	var charCount = 0;
+
+    	// For each member of the outfit, get the weapon time and kills data we want.
     	var n = 0;
     	for (n in json.outfit_list[0].members) {
-    		console.log(json.outfit_list[0].members[n].character_id)
+    		$.getJSON("http://census.soe.com/get/ps2-beta/character/" + json.outfit_list[0].members[n].character_id + "?c:resolve=item_list&c:show=stats.play_time.weapon,stats.kills.weapon" + "&callback=?", function(jsonCharacter) {
+    			// Test case: Return accumulated Gauss SAW kills.
+    			if (jsonCharacter.character_list[0] != null && jsonCharacter.character_list[0].stats.play_time.weapon[78] != null) {
+    				console.log(jsonCharacter);
+    				timeCount += parseInt(jsonCharacter.character_list[0].stats.play_time.weapon[78].value);
+    			}
+
+    		});
+    		n++;
     	}
+
+    	console.log(timeCount);
     });
 });
 </script>
