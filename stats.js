@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var alias = 'snh';
-    alias.toUpperCase();
+    var alias = alias.toUpperCase();
+    console.log(alias);
         
             var url =  "http://census.soe.com/s:bringinthestats/get/ps2-beta/outfit?alias="+alias+"&c:resolve=member";
             $.getJSON(url + "&callback=?", function(json) {
