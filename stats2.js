@@ -13,7 +13,7 @@ $(document).ready(function() {
                 // Storage variables for the SAW in this test.
                 var timeCount = 0;
                 var killCount = 0;
-                var scoreCount = 0;      
+                var scoreCount = 0;
                 var charCount = 0;
                 var outfitName;
 
@@ -31,18 +31,20 @@ $(document).ready(function() {
                             killCount += parseInt(jsonCharacter.character_list[0].stats.kills.weapon[78].value);
                         }
                         if (jsonCharacter.character_list[0] != null && jsonCharacter.character_list[0].stats.score.weapon[78] != null) {
-                            scoreCount += parseInt(jsonCharacter,character_list[0].stats.score.weapon[78].value);
+                            scoreCount += parseInt(jsonCharacter.character_list[0].stats.score.weapon[78].value);
                         }
                         console.log(timeCount/3600);
                         console.log(killCount);
-                        charCount = json.outfit_list[0].members.length;
                         console.log(charCount);
                         outfitName = json.outfit_list[0].name;
                         console.log(outfitName);
-                        var timeHour = timeCount/3600/charCount;
+                        var timeHour = (timeCount/3600);
+                        var avgTime = (timeCount/3600/charCount);
                         var avgKills = (killCount/charCount);
-                        var killsPerHour = (timeHour/avgKills);
-                        var scorePerHour = (timeHour/scoreCount);
+                        var avgScore = (scoreCount/charCount);
+                        var killsPerHour = (killCount/timeHour);
+                        var scorePerHour = (scoreCount/timeHour);
+
                         console.log(avgKills);
                         console.log(killsPerHour);
                         console.log(scorePerHour);
